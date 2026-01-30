@@ -15,8 +15,9 @@ export default function Login() {
         password: password,
       })
       .then((response) => {
+        console.log(response.data);
         localStorage.setItem("token", response.data.token);
-        if (response.data.role === "user") {
+        if (response.data.role === "USER") {
           navigate("/user");
         } else {
           navigate("/admin");

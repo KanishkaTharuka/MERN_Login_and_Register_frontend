@@ -12,14 +12,17 @@ export default function ForgetPassword() {
 
   function sendOtp() {
     axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/users/send-otp", {
+      .post(import.meta.env.VITE_BACKEND_URL + "/users/send_otp", {
         email: email,
       })
       .then((response) => {
+                console.log(response);
+
         setEmailSent(true);
         toast.success("OTP sent to your email");
       })
       .catch((error) => {
+        console.log(error);
         setEmailSent(false);
         toast.error("Error sending OTP");
       });
@@ -27,7 +30,7 @@ export default function ForgetPassword() {
 
   function resetPassword() {
     axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/users/verify-otp", {
+      .post(import.meta.env.VITE_BACKEND_URL + "/users/verify_otp", {
         email: email,
         otp: otp,
         newPassword: newPassword,

@@ -58,7 +58,7 @@ export default function UserManagement() {
   function updateUserRole(userId, role) {
     axios
       .put(
-        import.meta.env.VITE_BACKEND_URL + "/users/update-role/" + userId,
+        import.meta.env.VITE_BACKEND_URL + "/users/update_role/" + userId,
         {
           role: role,
         },
@@ -132,7 +132,7 @@ export default function UserManagement() {
           <tbody>
             {users.map((user) => (
               <tr
-                key={user._id}
+                key={user.userId}
                 className="border-b hover:bg-gray-50 transition"
               >
                 <td className="p-3">{user.name}</td>
@@ -190,8 +190,8 @@ export default function UserManagement() {
                 <input
                   type="radio"
                   name="role"
-                  value="admin"
-                  checked={newRole === "admin"}
+                  value="ADMIN"
+                  checked={newRole === "ADMIN"}
                   onChange={(e) => setNewRole(e.target.value)}
                 />
                 <span>Admin</span>
@@ -201,8 +201,8 @@ export default function UserManagement() {
                 <input
                   type="radio"
                   name="role"
-                  value="user"
-                  checked={newRole === "user"}
+                  value="USER"
+                  checked={newRole === "USER"}
                   onChange={(e) => setNewRole(e.target.value)}
                 />
                 <span>User</span>
